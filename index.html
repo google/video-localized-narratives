@@ -1,6 +1,1291 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<title>Video Localized Narratives</title>
-<body>
-Coming soon!
-</body>
+<!DOCTYPE html><html lang="en"><head><!--
+@license
+Copyright (c) 2017 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+--><!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+    <meta charset="utf-8">
+
+    <title>Video Localized Narratives</title>
+    <meta name="description" content="Video Localized Narratives">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons&amp;display=block" rel="stylesheet">
+    <style>
+
+:root {
+  --mdc-dialog-max-width: 800px;
+}
+
+pre {
+  text-align: left;
+}
+
+html,
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.5em;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.wrap {
+  max-width: 900px;
+  margin: auto;
+}
+
+.block {
+  margin-bottom: 75px;
+}
+
+.center {
+  text-align: center;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+h1 {
+  font-size: 45px;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  line-height: 50px;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 300;
+}
+
+hr.separator {
+  background: #000;
+  max-width: 70px;
+  height: 9px;
+  border: none;
+  margin-top: 60px;
+}
+
+.license {
+  font-size: small;
+  margin-bottom: 0;
+}
+
+.mask {
+  opacity: 100%;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: white;
+}
+
+.author-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 15px;
+  justify-items: center;
+  padding: 0;
+}
+
+.author-column {
+  text-align: center;
+}
+
+.author-column > .author {
+  font-size: 16px;
+  text-align: center;
+}
+
+.author-column > .affiliation {
+  font-size: 14px;
+  text-align: center;
+}
+
+.paper-col {
+  width: 12.5%;
+  float: left;
+}
+
+.paper-col-im {
+  width: 95%;
+  border: 1px solid black;
+}
+
+.paper-row {
+  margin: 15px;
+}
+
+.col-download-text {
+  margin-top: 20px;
+  width: 15%;
+  float: left;
+  text-align: left;
+}
+
+.row::after {
+  content: '';
+  clear: both;
+  display: table;
+  margin-bottom: 8px;
+}
+
+mwc-button {
+  --mdc-theme-primary: #969696;
+  --mdc-theme-on-primary: white;
+}
+
+.visualizer-header,
+.visualizer-footer {
+  background-color: #969696;
+  color: white;
+}
+
+.visualizer-header {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.visualizer-footer {
+  box-shadow: 0 -4px 8px 0 rgba(0, 0, 0, 0.2), 0 -6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.visualizer-footer > p {
+  margin: 0 10px;
+  font-size: 90%;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.visualizer-header > p {
+  float: left;
+  text-align: center;
+  font-weight: 400;
+  font-size: larger;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.visualizer-header > mwc-icon-button {
+  padding: 3px;
+}
+
+.visualizer-header > input {
+  height: 34px;
+  margin: 10px;
+  border: none;
+  border-radius: 6px;
+  box-sizing: border-box;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 300px;
+}
+
+.visualizer {
+  text-align: left;
+}
+
+input:focus {
+  outline: none;
+}
+
+.page-button {
+  width: 99%;
+  padding-top: 15px;
+}
+
+.download-button {
+  width: 40%;
+  padding-top: 20px;
+}
+
+.download-button-single {
+  width: 80%;
+  padding-top: 15px;
+}
+
+.field{
+  background-color: #eee;
+  border-radius: 4px;
+  padding: 3px;
+  border-left: 3px solid #126a73;
+}
+
+.visualizer-container {
+  display: none;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.visualizer-container > mwc-circular-progress {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  --mdc-theme-primary: #969696;
+}
+
+.annotation-body,
+.grid-body {
+  display: none;
+  flex: auto;
+  overflow-y: scroll;
+}
+
+.grid-body {
+  padding: 6px;
+  line-height: 0;
+}
+
+.grid-column {
+  float: left;
+  padding: 6px;
+}
+
+.grid-column > img {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 6px 0;
+  box-shadow: 0 0 8px 0 #8c8c8c;
+  cursor: zoom-in;
+}
+
+.example-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.no-decoration {
+  text-decoration: none;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #969696;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 120%;
+  left: 50%;
+  margin-left: -60px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tooltip .tooltiptext::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #969696 transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.rightmost-tooltip {
+  margin-left: -100px !important;
+}
+
+.rightmost-tooltip::after {
+  left: 83% !important;
+}
+
+.leftmost-tooltip {
+  margin-left: -21px !important;
+}
+
+.leftmost-tooltip::after {
+  left: 17% !important;
+}
+
+.not-found {
+  margin: 0;
+  font-size: larger;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #969696;
+}
+
+.not-found > mwc-icon {
+  margin: 20px;
+  --mdc-icon-size: 64px;
+}
+
+.tt {
+  font-family: 'Courier New', monospace;
+  background-color: #d9d9d9;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+</style>
+    
+    </head>
+
+  <body onload="loadCallback();"><div hidden="" by-vulcanize=""><dom-module id="loco-image" assetpath="/loco-image/">
+  <template>
+    <style>
+      /* This is needed to make sure the polymer component has an
+      offsetWidth. */
+      :host {
+        display: block;
+      }
+      #main, #canvasContainer {
+        width: 100%;
+      }
+      svg {
+        border-style: solid;
+      }
+      .flexcol {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .flexrow {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+    </style>
+    <div id="main">
+      <template is="dom-if" if="[[title]]">
+        <div>[[title]]</div>
+      </template>
+      
+      <div id="canvasContainer" hidden$="[[!imageLoaded_]]">
+        <svg id="canvas" on-tap="handleTap_" height$="[[canvasHeight]]" width$="[[canvasWidth]]" style="[[getCanvasStyle_(effectiveFontSize_, borderWidth)]]">
+          <g id="image" transform$="[[imageZoomTransform_]]">
+            <image href$="[[effectiveImageUrl_]]" height$="[[imageHeight]]" width$="[[imageWidth]]">
+              <slot id="content"></slot>
+            </image>
+          </g>
+        </svg>
+      </div>
+      <div hidden$="[[imageLoaded_]]" id="loader" style="[[getLoaderStyle_(borderWidth, canvasHeight, canvasWidth)]]">
+        <div class="flexcol">
+          <div class="flexrow">
+            <paper-spinner-lite active="[[!imageLoadingHasError_]]">
+            </paper-spinner-lite>
+            <span hidden$="[[!imageLoadingHasError_]]">
+              Failed to load image from [[imageUrl]].
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div hidden="">
+        <span>Client Coordinates: ([[clientPoint_.x]], [[clientPoint_.y]])</span><br>
+        <span>Canvas Coordinates: ([[canvasPoint_.x]], [[canvasPoint_.y]])</span><br>
+        <span>Image Coordinates: ([[imagePoint.x]], [[imagePoint.y]])</span><br>
+        <span>ViewBox Coordinates: ([[viewBoxPoint_.x]], [[viewBoxPoint_.y]])</span><br>
+        <span>imageTransform translation: ([[imageTransform_.x]],[[imageTransform_.y]])&gt;</span><br>
+        <span>imageTransform scale: [[imageTransform_.scale]]</span><br>
+        <span>ScaleRatio_: [[scaleRatio]]</span>
+      </div>
+    </div>
+  </template>
+  </dom-module>
+<dom-module id="loco-bounding-box" assetpath="/loco-bounding-box/">
+  <template>
+    
+    <svg>
+      <g id="box">
+        
+        <rect x$="[[xmin]]" y$="[[ymin]]" height$="[[height]]" width$="[[width]]" stroke$="[[borderColorRgba]]" stroke-width$="[[effectiveBorderWidth_]]" stroke-dasharray$="[[borderDashArray]]" fill="none"></rect>
+        
+        
+        <foreignObject x$="[[xmin]]" y$="[[ymin]]" height$="[[height]]" width$="[[width]]">
+          
+          <div>
+            
+            <input id="inputText" type="text" value$="[[text]]" hidden$="[[!effectiveShowInputField_]]" style="[[getInputTextStyle_(effectiveFontSize_)]]">
+            <span id="text" hidden$="[[!effectiveShowText_]]" style="[[getTextStyle_(textBackgroundColorRgba)]]">
+              [[text]]
+            </span>
+          </div>
+        </foreignObject>
+      </g>
+    </svg>
+  </template>
+  </dom-module>
+<dom-module id="loco-point" assetpath="/loco-point/">
+  <template>
+    <svg>
+      <g id="point">
+        <circle cx$="[[data.x]]" cy$="[[data.y]]" r$="[[radius_(data,scaleRatio)]]" fill$="[[color_(data)]]">
+        </circle>
+      </g>
+    </svg>
+  </template>
+  </dom-module>
+<dom-module id="loco-curve" assetpath="/loco-curve/">
+  <template>
+    <svg>
+      <g id="curve">
+        <path d$="[[curveString_]]" fill="none" stroke$="[[lineColor]]" stroke-width$="[[effectiveStrokeWidth_]]">
+        </path>
+      </g>
+    </svg>
+  </template>
+  </dom-module><dom-module id="loco-segmentation-mask" assetpath="/loco-segmentation-mask/">
+  <template>
+    <svg>
+      <g id="mask">
+        <path d$="[[pathString_]]" fill$="[[fillColor]]" fill-rule="evenodd" fill-opacity$="[[fillOpacity]]">
+      </path></g>
+    </svg>
+  </template>
+  </dom-module>
+<dom-module id="loco-label" assetpath="/loco-label/">
+  <template>
+    <svg>
+      <g id="label">
+        
+        <foreignObject x$="[[data.x]]" y$="[[data.y]]" height="1px" width="1px" style="overflow: visible">
+          <div>
+            <input id="inputText" type="text" value$="[[data.text]]" style="[[getInputTextStyle_(editingText, scaleRatio)]]">
+            <span id="text" style="[[getTextStyle_(data.*, editingText, scaleRatio)]]">
+              [[data.text]]
+            </span>
+          </div>
+        </foreignObject>
+      </g>
+    </svg>
+  </template>
+  </dom-module>
+<dom-module id="loco-labeled-point" assetpath="/loco-labeled-point/">
+  <template>
+    
+    <template is="dom-if" if="[[data.point]]">
+      <loco-point data="{{data.point}}"></loco-point>
+
+      
+      <template is="dom-if" if="[[data.label]]">
+        <loco-label editing-text="{{editingText}}" data="{{data.label}}">
+        </loco-label>
+      </template>
+    </template>
+  </template>
+  </dom-module>
+<dom-module id="loco-binary-mask" assetpath="/loco-binary-mask/">
+  <template>
+    <div hidden="">
+      <canvas id="maskCanvas">
+      </canvas>
+    </div>
+    <svg>
+      <g id="binaryMask">
+        <image id="rasterImage">
+      </image></g>
+    </svg>
+  </template>
+  </dom-module>
+<dom-module id="loco-annotated-image" assetpath="/loco-annotated-image/">
+  <template>
+    <style>
+      #image {
+          text-align: var(--loco-annotated-image-text-align);
+      }
+    </style>
+    <loco-image id="image" title="[[title]]" image-url="[[imageUrl]]" border-width="[[borderWidth]]" canvas-height="[[canvasHeight]]" canvas-width="[[canvasWidth]]" canvas-margin="[[canvasMargin]]" image-height="{{imageHeight}}" image-width="{{imageWidth}}" font-size="[[fontSize]]" image-data="{{imageData}}" expose-image-data="[[exposeImageData]]" image-point="{{imagePoint}}">
+      
+      <template is="dom-repeat" items="[[objects]]" filter="hasBoundingBox_" observe="bounding_box">
+        <loco-bounding-box color="[[colorOrDefault_(item)]]" xmin="[[item.bounding_box.xmin]]" xmax="[[item.bounding_box.xmax]]" ymin="[[item.bounding_box.ymin]]" ymax="[[item.bounding_box.ymax]]" border-dash-array="[[item.bounding_box.dash_array]]" text="[[item.text]]">
+        </loco-bounding-box>
+      </template>
+
+      
+      <template is="dom-repeat" items="[[boundingBoxes]]">
+        <loco-bounding-box color="[[colorOrDefault_(item)]]" border-dash-array="[[dashArrayOrDefault_(item)]]" xmin="[[item.xmin]]" xmax="[[item.xmax]]" ymin="[[item.ymin]]" ymax="[[item.ymax]]" text="[[item.text]]">
+        </loco-bounding-box>
+      </template>
+
+      
+      <template is="dom-repeat" items="[[clicksToPoints_(clicks)]]">
+        <loco-point data="[[item]]">
+        </loco-point>
+      </template>
+
+      
+      <template is="dom-repeat" items="{{points}}">
+        <template is="dom-if" if="[[item.x]]">
+          <loco-point data="[[item]]">
+          </loco-point>
+        </template>
+        <template is="dom-if" if="[[isLabeledPoint_(item)]]">
+          <loco-labeled-point data="[[item]]">
+          </loco-labeled-point>
+        </template>
+      </template>
+
+      
+      <template is="dom-repeat" items="{{labels}}">
+        <loco-label data="{{item}}">
+        </loco-label>
+      </template>
+
+      
+      <template is="dom-repeat" items="[[regions]]">
+        <loco-segmentation-mask polygons="{{item}}" fill-color="[[getSegmentationColor_(index)]]">
+        </loco-segmentation-mask>
+      </template>
+
+      
+      <template is="dom-repeat" items="[[curves]]">
+        <loco-curve line-color="[[getTraceColor_(item)]]" line-width="3" points="{{item}}">
+        </loco-curve>
+      </template>
+
+      
+      <template is="dom-repeat" items="[[masks]]">
+        <loco-binary-mask class="binaryMasks" mask="{{item}}">
+        </loco-binary-mask>
+      </template>
+
+    </loco-image>
+
+    
+    <div hidden="">
+      <template is="dom-if" if="[[points.length]]">
+        <b>Labeled points ([[points.length]]):</b><br>
+      </template>
+      <template is="dom-repeat" items="[[points]]">
+        <template is="dom-if" if="[[!item.point]]">
+          ([[item.x]], [[item.y]])<br>
+        </template>
+        <template is="dom-if" if="[[item.point]]">
+          <i>Label:</i> [[item.label.text]]. <i>Position:</i> ([[item.point.x]], [[item.point.y]]).
+          <template is="dom-if" if="[[item.time_interval]]">
+            <i>Times:</i> ([[item.time_interval.start]], [[item.time_interval.end]])
+          </template>
+          <br>
+        </template>
+      </template>
+    </div>
+  </template>
+  </dom-module>
+<dom-module id="loco-pclick-logic" assetpath="/loco-pclick-logic/">
+  </dom-module>
+<dom-module id="loco-mouse-trace-service" assetpath="/loco-mouse-trace-service/">
+  </dom-module>
+<dom-module id="loco-array-binder" assetpath="/loco-array-binder/">
+  <template>
+  </template>
+  </dom-module>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"><dom-module id="loco-overlay" assetpath="/loco-overlay/">
+  <template>
+    <style>
+      :host {
+        background: white;
+        color: black;
+        padding: 24px;
+        box-shadow: rgba(0, 0, 0, 0.24) -2px 5px 12px 0px, rgba(0, 0, 0, 0.12) 0px 0px 12px 0px;
+      }
+    </style>
+    <slot></slot>
+  </template>
+  </dom-module>
+<dom-module id="loco-help" assetpath="/loco-help/">
+  <template>
+    <style>
+      loco-overlay {
+          font-family: sans-serif;
+          background-color: #000000b3;
+          color: white;
+      }
+      .helpAction {
+          color: yellow;
+          vertical-align: top;
+          text-align: right;
+      }
+      .helpSeparator {
+          vertical-align: top;
+      }
+      .helpMessage {
+          max-width: 600px;
+          text-align: left;
+      }
+      .helpSection {
+          color: yellow;
+          font-weight: bold;
+          text-align: center;
+          padding-top: 20px;
+      }
+
+      .previewContainer_0 {
+          width: fit-content;
+          margin: auto;
+          padding-bottom: 20px;
+          padding-top: 20px;
+      }
+      .previewContainer_1 {
+          display: inline-flex;
+      }
+      .previewContainer_2 {
+          display: inline-block;
+          padding-left: 0.6em;
+          padding-right: 0.6em;
+          border-left: 1px solid black;
+      }
+      #previewContainer_2_0 {
+          border-left: none;
+      }
+      .previewContainer_3 {
+          display: flex;
+          align-items: center;
+      }
+      .previewContainer_4 {
+          display: inline-block;
+          border: 1px solid black;
+          border-radius: 6px;
+          width: 3em;
+          height: 1.5em;
+          line-height: 1.5em;
+          vertical-align: middle;
+          text-align: center;
+      }
+      .previewContainer_5 {
+          margin-left: 0.5em;
+      }
+    </style>
+
+    <loco-overlay id="overlay" with-backdrop="" scroll-action="lock">
+      <table>
+        <template is="dom-repeat" items="[[sections]]" as="section">
+          <tr>
+            <td class="helpSection" colspan="3">[[section.title]]</td>
+          </tr>
+          <template is="dom-repeat" items="[[section.units]]" as="unit">
+            <tr>
+              <td class="helpAction">[[unit.action]]</td>
+              <td class="helpSeparator">:</td>
+              <td class="helpMessage">[[unit.message]]</td>
+            </tr>
+          </template>
+        </template>
+      </table>
+    </loco-overlay>
+
+    <div class="previewContainer_0" hidden="[[!hasPreview_]]">
+      <template is="dom-repeat" items="[[sections]]" as="section" filter="sectionHasPreview_">
+        <template is="dom-repeat" items="[[section.units]]" as="unit" filter="unitHasPreview_" observe="preview" index-as="unit_index">
+          <div class="previewContainer_1">
+            <div class="previewContainer_2" id="previewContainer_2_[[unit_index]]">
+              <div class="previewContainer_3">
+                <div class="previewContainer_4">
+                  <b>[[unit.action]]</b>
+                </div>
+                <span class="previewContainer_5">[[unit.message]]</span>
+              </div>
+            </div>
+          </div>
+        </template>
+      </template>
+    </div>
+
+  </template>
+  </dom-module>
+<dom-module id="loco-annotation" assetpath="/loco-annotation/">
+  <template>
+    <style>
+      #main {
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+      }
+      #toolBarTop {
+        background-color: var(--paper-light-blue-600);
+        color: white;
+        height: 50px;
+        font-family: 'Open Sans', sans-serif;
+        font-stretch: semi-condensed;
+        font-size: medium;
+      }
+      #horizontalSplit {
+        padding: 20px;
+        display: flex;
+        flex: 2;
+        height: 100%;
+        justify-content: space-between;
+      }
+
+      #annotationUI {
+        height: var(--loco-annotation-annotation-ui-height, 100%);
+        justify-content: center;
+        display: flex;
+        flex-direction: var(--loco-annotation-annotation-ui-flex-direction);
+      }
+
+      #documentationContent {
+        border: 1px solid;
+        box-sizing: border-box;
+        width: 100%;
+        flex: var(--loco-annotation-documentation-content-flex);
+        height: var(--loco-annotation-documentation-height, 100%);
+      }
+
+      paper-button[toggles][active] {
+        background-color: var(--paper-light-blue-800);
+      }
+
+      paper-button:hover {
+        background-color: var(--paper-light-blue-700);
+      }
+
+      paper-button {
+        text-transform: capitalize;
+        height: 42px;
+      }
+
+      loco-annotated-image {
+        font-family: 'Open Sans', sans-serif;
+      }
+
+      #doneButton {
+        background-color: var(--paper-light-blue-600);
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        display: var(--loco-annotation-done-button-display, block);
+      }
+
+      #soundRecordText {
+        padding-left: 10px;
+      }
+
+      #soundRecordHistogram {
+        padding-top: 6px;
+        padding-left: 10px;
+      }
+    </style>
+
+    <div id="main">
+      <paper-fab icon="check" id="doneButton" on-tap="done_"></paper-fab>
+      <app-toolbar id="toolBarTop">
+        <template if="[[documentationUrl]]" is="dom-if">
+          <paper-button active="[[activeDocumentation_]]" on-tap="showDocumentationClicked_" toggles="">
+            Show documentation
+          </paper-button>
+        </template>
+        <template if="[[soundRecordParams.enabled]]" is="dom-if">
+          <span id="soundRecordText">[[soundRecordText]]</span>
+          <loco-bar-plot background-color="" data="[[frequencyHistogram]]" foreground-color="#d0d0d0" height="30" id="soundRecordHistogram" width="80">
+          </loco-bar-plot>
+        </template>
+      </app-toolbar>
+      <div id="horizontalSplit">
+        <div id="annotationUI">
+            <loco-annotated-image bounding-boxes="[[boundingBoxes]]" canvas-height="[[canvasHeight]]" canvas-margin="[[canvasMargin]]" canvas-width="[[canvasWidth]]" curves="[[curvesBinding]]" expose-image-data="[[exposeImageData]]" font-size="14" id="image" image-data="{{imageDataBinding}}" image-height="{{imageHeight}}" image-point="{{imagePoint_}}" image-url="[[imageUrl]]" image-width="{{imageWidth}}" masks="[[visibleMasks_]]" points="[[points]]">
+            </loco-annotated-image>
+            <loco-help id="help"></loco-help>
+        </div>
+        <div hidden="[[!showDocumentation_]]" id="documentationContainer">
+          <iframe id="documentationContent" type="application/pdf">
+          </iframe>
+        </div>
+      </div>
+    </div>
+    <loco-pclick-logic id="pclick" points="{{points}}" params="{{pclickParams}}">
+    </loco-pclick-logic>
+    <loco-mouse-trace-service id="mouseTrace" mouse-position="[[imagePoint_]]" mouse-traces="{{curvesBinding}}" parameters="[[mouseTraceParams]]">
+    </loco-mouse-trace-service>
+    <loco-sound-record-service frequency-histogram="{{frequencyHistogram}}" id="soundRecord" parameters="[[soundRecordParams]]" top-toolbar-text="{{soundRecordText}}">
+    </loco-sound-record-service>
+
+    
+    <loco-array-binder id="correctiveClicksBoundingBoxBinder" item="{{correctiveClicksBoundingBoxBinding}}" array="{{boundingBoxes}}">
+    </loco-array-binder>
+    <loco-array-binder id="correctiveClicksMaskBinder" item="{{correctiveClicksMaskBinding}}" array="{{masks}}">
+    </loco-array-binder>
+    <loco-corrective-clicks id="correctiveClicks" read-only="[[readOnly]]" bounding-box="{{correctiveClicksBoundingBoxBinding}}" mask="{{correctiveClicksMaskBinding}}" active-points="{{points}}" image-data="[[imageDataBinding]]" params="[[correctiveClicksParams]]" model="[[interactiveComputationClient]]">
+    </loco-corrective-clicks>
+  </template>
+  </dom-module>
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DNG56EZC8W"></script></div>
+    <div class="mask" id="start-mask"></div>
+    <div class="wrap">
+      <div id="header-div" class="center block">
+        <h2 style="margin-bottom: 0; margin-top: 100px">
+          Connecting Vision and Language with
+        </h2>
+        <h1 style="margin-bottom: 80px; margin-top: 0">
+          Video Localized Narratives
+        </h1>
+
+        <div id="authors-div" class="author-grid">
+          <div class="author-column">
+            <span class="author"><a href="https://research.google/people/PaulVoigtlaender/" target="_blank">Paul Voigtlaender</a></span><br>
+            <span class="affiliation">Google Research</span>
+          </div>
+          <div class="author-column">
+            <span class="author"><a href="https://research.google/people/106773/" target="_blank">Soravit (Beer) Changpinyo</a></span><br>
+            <span class="affiliation">Google Research</span>
+          </div>
+          <div class="author-column">
+            <span class="author"><a href="https://jponttuset.cat" target="_blank">Jordi Pont-Tuset</a></span><br>
+            <span class="affiliation">Google Research</span>
+          </div>
+          <div class="author-column">
+            <span class="author"><a href="http://www.radusoricut.com/" target="_blank">Radu Soricut</a></span><br>
+            <span class="affiliation">Google Research</span>
+          </div>
+          <div class="author-column">
+            <span class="author"><a href="https://sites.google.com/corp/view/vittoferrari" target="_blank">Vittorio Ferrari</a></span><br>
+            <span class="affiliation">Google Research</span>
+          </div>
+        </div>
+
+        <hr class="separator">
+        <h2>Publication</h2>
+        <div id="publication-div" class="center block">
+          <b>Connecting Vision and Language with Video Localized Narratives</b>
+          <br>
+          Paul Voigtlaender, Soravit Changpinyo, Jordi Pont-Tuset, Radu Soricut,
+          and Vittorio Ferrari
+          <br>
+          ArXiv, 2023
+          <br>
+          [<a href="https://arxiv.org/abs/2302.11217" target="_blank">arXiv</a>] [<a href="javascript:document.getElementById('bibtex').open = true;">BibTeX</a>]
+          <a href="" target="_blank">
+            <div class="row paper-row">
+              <div class="paper-col">
+                <img class="paper-col-im" src="data/thumb/thumbnail-0.jpg" alt="Screenshot of page 1 of the paper">
+              </div>
+              <div class="paper-col">
+                <img class="paper-col-im" src="data/thumb/thumbnail-1.jpg" alt="Screenshot of page 2 of the paper">
+              </div>
+              <div class="paper-col">
+                <img class="paper-col-im" src="data/thumb/thumbnail-2.jpg" alt="Screenshot of page 3 of the paper">
+              </div>
+              <div class="paper-col">
+                <img class="paper-col-im" src="data/thumb/thumbnail-3.jpg" alt="Screenshot of page 4 of the paper">
+              </div>
+              <div class="paper-col">
+                <img class="paper-col-im" src="data/thumb/thumbnail-4.jpg" alt="Screenshot of page 5 of the paper">
+              </div>
+              <div class="paper-col">
+                <img class="paper-col-im" src="data/thumb/thumbnail-5.jpg" alt="Screenshot of page 6 of the paper">
+              </div>
+              <div class="paper-col">
+                <img class="paper-col-im" src="data/thumb/thumbnail-6.jpg" alt="Screenshot of page 7 of the paper">
+              </div>
+              <div class="paper-col">
+                <img class="paper-col-im" src="data/thumb/thumbnail-7.jpg" alt="Screenshot of page 8 of the paper">
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <mwc-dialog id="bibtex">
+          <pre id="bibtex_text">@article{VoigtlaenderVidLN2023,
+  author        = {Paul Voigtlaender and Soravit Changpinyo and Jordi Pont-Tuset and Radu Soricut and Vittorio Ferrari},
+  title         = {{Connecting Vision and Language with Video Localized Narratives}},
+  journal       = {arXiv preprint arXiv:2302.11217},
+  year          = {2023}
+}</pre>
+          <mwc-button slot="secondaryAction" onclick="navigator.clipboard.writeText(document.getElementById('bibtex_text').innerText);">
+            Copy to clipboard
+          </mwc-button>
+          <mwc-button slot="primaryAction" onclick="document.getElementById('bibtex').open = false;">
+            Close
+          </mwc-button>
+        </mwc-dialog>
+
+        <hr class="separator">
+        <h2>Abstract</h2>
+        <div id="abstract-div" class="center block">
+          We propose Video Localized Narratives, a new form of multimodal video annotations connecting vision and language. In the original Localized Narratives, annotators speak and move their mouse simultaneously on an image, thus grounding each word with a mouse trace segment. However, this is challenging on a video. Our new protocol empowers annotators to tell the story of a video with Localized Narratives, capturing even complex events involving multiple actors interacting with each other and with several passive objects. We annotated 14k videos of the OVIS, UVO, and Oops datasets, totalling 1.1M words. Based on this data, we also construct new benchmarks for video narrative grounding and video question-answering tasks, and provide reference results from strong baseline models. Our annotations are available at <a href="https://google.github.io/video-localized-narratives/">https://google.github.io/video-localized-narratives/</a>.
+        </div>
+
+        <hr class="separator">
+        <h2>Explore</h2>
+        <img src="data/vidln-ostrich.png" alt="A video localized narrative annotation example" class="example-img">
+        <div id="visualizer-open-div" class="center block">
+          <mwc-button raised="" class="page-button" icon="open_in_browser" onclick="openVisualizer();">
+            Open Annotation Visualizer
+          </mwc-button>
+        </div>
+
+        <hr class="separator">
+        <h2>Code</h2>
+        <div id="code-div" class="center block">
+          Visit the
+          <a href="https://github.com/google/video-localized-narratives" target="_blank">GitHub repository</a>
+          to view the code work with Video Localized Narratives.
+          <br>
+          Here is the
+          <a id="open-vln-formats-link-1" style="text-decoration: underline; cursor: pointer" href="javascript:document.getElementById('vln-formats').open = true;">documentation</a>
+          about the file format used used for the Video Localized Narratives.
+        </div>
+
+        <hr class="separator">
+        <h2>Downloads</h2>
+        <div id="downloads-div" class="center block" style="padding-bottom: 80px">
+        <div style="margin-bottom: 10px; margin-top: 45px">
+          <b>Videos and Frames</b>
+        </div>
+          We do not provide the videos or their frames. Please download the raw datasets from their respective websites.
+          You can use the <a href="https://drive.google.com/file/d/1C0TKKVIOfaQ_qiVxGuQbMAlXUcTd3B4h/view?usp=sharing" target="_blank">script</a> provided by the UVO dataset to extract frames.
+          
+          <div style="margin-bottom: 10px; margin-top: 45px">
+            <b>Video Localized Narratives</b>
+          </div>
+          Here you can download the full set of Video Localized Narrative Annotations
+          (<a id="open-vln-formats-link-2" style="text-decoration: underline; cursor: pointer" href="javascript:document.getElementById('vln-formats').open = true;">format description</a>).
+          <br>
+          Please note that some videos have more than one Video Localized
+          Narrative annotation.
+          The original UVO dataset has subsets with sparse and dense annotations, we kept this split and provide separate downloads for the sparse and dense subsets.
+
+          <mwc-dialog id="vln-formats">
+            <mwc-button slot="primaryAction" onclick="document.getElementById('vln-formats').open = false;">
+            Close
+          </mwc-button>
+<div style="max-width: 750px; text-align: left;">
+<h2>File formats</h2>
+<p> The annotations are in <a href="http://jsonlines.org/" target="_blank">JSON Lines</a> format,
+  that is, each line of the file is an independent valid JSON-encoded object.</p>
+<p>Each line represents one Video Localized Narrative annotation on one video by one annotator
+  and has the following fields:</p>
+  <ul>
+    <li><tt class="field">vidln_id</tt> Integer identifying the Video Localized Narrative, e.g. <tt>42</tt>.</li>
+    <li><tt class="field">dataset_id</tt> String identifying the dataset and split where
+      the video belongs to, e.g. <tt>"UVO_sparse_train"</tt>.</li>
+    <li><tt class="field">video_id</tt> String identifier of the video, e.g. <tt>"c1a40349"</tt>.</li>
+    <li><tt class="field">annotator_id</tt> Integer number uniquely identifying each annotator, e.g. <tt>5</tt>.</li>
+    <li><tt class="field">keyframe_names</tt> Names of the keyframes for the video (list of strings), e.g. <tt>["img_0000005", "img_0000012", "img_0000019", "img_0000026"]</tt>.</li>
+    <li><tt class="field">actor_narratives</tt> A list of dictionaries. The length is the number of actors and each dictionary has the annotations for one actor with the following items:</li>
+    <ul>
+      <li><tt class="field">actor_name</tt> The name of the actor (string), e.g. <tt>"Man one"</tt>.</li>
+      <li><tt class="field">keyframe_selection_indices</tt> A list of integers, specifying which of the keyframes (given by 'keyframe_names') are selected for this actor.</li>
+      <li><tt class="field">recording_start_time_ms_since_epoch</tt> Integer describing the time stamp when the audio recording for this actor has started (milliseconds elapsed since Jan 1, 1970), e.g. <tt>1646807046669</tt>.</li>
+      <li><tt class="field">traces_start_time_ms_since_epoch</tt> Integer describing the time stamp when the annotation of traces for this actor has started (milliseconds elapsed since Jan 1, 1970), e.g. <tt>1646807046265</tt>.</li>
+      <li><tt class="field">caption</tt> The manual transcription of what the annotator said when describing the actor (string), e.g. <tt>"A brown tiger with black stripes is fighting with the other tiger."</tt></li>
+      <li><tt class="field">noun_segments</tt> The positions of words in the caption that are automatically tagged as nouns. A list of two-element lists, e.g. <tt>[[8, 13], [25, 32], [60, 65]]</tt>, where [8,13] refers to caption[8:13], which for the example above is "tiger".</li>
+      <li><tt class="field">recording_filename</tt> The filename of the audio recording for this actor (string), e.g. <tt>"recordings/OVIS_train/1_0.webm"</tt>,
+        where to find the voice recording (in
+        <a href="https://en.wikipedia.org/wiki/WebM" target="_blank">webm</a> format) for the actor of the Video Localized Narrative.</li>
+      <li><tt class="field">time_alignment</tt> Provides start and end timestamps for words of the caption (when they were spoken). This is used to connect the words to mouse trace segments. The format is a list of dictionaries, one dictionary for each word, e.g. {'end_ms': 4720, 'referenced_word': 'brown', 'referenced_word_end_idx': 7, 'referenced_word_start_idx': 2, 'start_ms': 4180}. Here, 'start_ms' and 'end_ms' are time-stamps in milliseconds relative to the start of the audio file. 'referenced_word' is the spoken word of the caption and 'referenced_word_start_idx' and 'referenced_word_end_idx' provide indices into the caption which correspond to the word (caption[referenced_word_start_idx:referenced_word_end_idx] corresponds to 'referenced_word').</li>
+      <li><tt class="field">traces</tt> The mouse traces encoded as a list of mouse trace segments, where each mouse trace segment is a list of dictionaries, e.g. {'x': 0.53791, 'y': 0.41684, 'time_ms_since_epoch': 1646374113797, 'kf_idx': 6}. 'kf_idx' is the integer index of the keyframe (it indexes into 'keyframe_names'). 'time_ms_since_epoch' is the time stamp when this mouse position occurred (integer, in milliseconds since Jan 1, 1970), and 'x' and 'y' are normalized coordinates (floats) in the key-frame that specify the position of the mouse.</li>
+    </ul>
+  </ul>
+</div>
+</mwc-dialog>
+
+          <div id="downloads-ovis">
+            <div class="col-download-text">OVIS</div>
+            <a class="no-decoration" href="https://storage.googleapis.com/video-localized-narratives/vidlns/OVIS_train.jsonl">
+              <mwc-button raised="" class="download-button" icon="get_app">
+                Train (83MB)*
+              </mwc-button>
+            </a>
+            <mwc-button raised="" class="download-button" icon="get_app" style="visibility: hidden">
+            </mwc-button>
+          </div>
+
+          <div id="downloads-uvo-sparse">
+            <div class="col-download-text">UVO (sparse)</div>
+            <a class="no-decoration" href="https://storage.googleapis.com/video-localized-narratives/vidlns/UVO_sparse_train.jsonl">
+              <mwc-button raised="" class="download-button" icon="get_app">
+                Train (816MB)*
+              </mwc-button>
+            </a>
+            <a class="no-decoration" href="https://storage.googleapis.com/video-localized-narratives/vidlns/UVO_sparse_val.jsonl">
+              <mwc-button raised="" class="download-button" icon="get_app">
+                Validation (342MB)*
+              </mwc-button>
+            </a>
+          </div>
+
+          <div id="downloads-uvo-dense">
+            <div class="col-download-text">UVO (dense)</div>
+            <a class="no-decoration" href="https://storage.googleapis.com/video-localized-narratives/vidlns/UVO_dense_train.jsonl">
+              <mwc-button raised="" class="download-button" icon="get_app">
+                Train (62MB)*
+              </mwc-button>
+            </a>
+            <a class="no-decoration" href="https://storage.googleapis.com/video-localized-narratives/vidlns/UVO_dense_val.jsonl">
+              <mwc-button raised="" class="download-button" icon="get_app">
+                Validation (31MB)*
+              </mwc-button>
+            </a>
+          </div>
+
+          <div id="downloads-oops">
+            <div class="col-download-text">Oops</div>
+            <a class="no-decoration" href="https://storage.googleapis.com/video-localized-narratives/vidlns/oops_train.jsonl">
+              <mwc-button raised="" class="download-button" icon="get_app">
+                Train (1GB)*
+              </mwc-button>
+            </a>
+            <a class="no-decoration" href="https://storage.googleapis.com/video-localized-narratives/vidlns/oops_val.jsonl">
+              <mwc-button raised="" class="download-button" icon="get_app">
+                Validation (211MB)*
+              </mwc-button>
+            </a>
+          </div>
+
+          <div style="margin-bottom: 10px; margin-top: 45px">
+            <b>Audio Recordings</b>
+          </div>
+          Here you can download the full set of Audio recordings of the Video Localized Narratives, in <a href="https://en.wikipedia.org/wiki/WebM" target="_blank">webm</a> format.
+
+          <div id="downloads-ovis-audio">
+            <div class="col-download-text">OVIS</div>
+            <a class="no-decoration" href="https://storage.googleapis.com/video-localized-narratives/recordings/recordings_OVIS_train.zip">
+              <mwc-button raised="" class="download-button" icon="get_app">
+                Train (966MB)*
+              </mwc-button>
+            </a>
+            <mwc-button raised="" class="download-button" icon="get_app" style="visibility: hidden">
+            </mwc-button>
+          </div>
+
+          <div id="downloads-uvo-sparse-audio">
+            <div class="col-download-text">UVO (sparse)</div>
+            <a class="no-decoration" href="https://storage.googleapis.com/video-localized-narratives/recordings/recordings_UVO_sparse_train.zip">
+              <mwc-button raised="" class="download-button" icon="get_app">
+                Train (8.2GB)*
+              </mwc-button>
+            </a>
+            <a class="no-decoration" href="https://storage.googleapis.com/video-localized-narratives/recordings/recordings_UVO_sparse_val.zip">
+              <mwc-button raised="" class="download-button" icon="get_app">
+                Validation (3.8GB)*
+              </mwc-button>
+            </a>
+          </div>
+
+          <div id="downloads-uvo-dense-audio">
+            <div class="col-download-text">UVO (dense)</div>
+            <a class="no-decoration" href="https://storage.googleapis.com/video-localized-narratives/recordings/recordings_UVO_dense_train.zip">
+              <mwc-button raised="" class="download-button" icon="get_app">
+                Train (773MB)*
+              </mwc-button>
+            </a>
+            <a class="no-decoration" href="https://storage.googleapis.com/video-localized-narratives/recordings/recordings_UVO_dense_val.zip">
+              <mwc-button raised="" class="download-button" icon="get_app">
+                Validation (401MB)*
+              </mwc-button>
+            </a>
+          </div>
+
+          <div id="downloads-oops-audio">
+            <div class="col-download-text">Oops</div>
+            <a class="no-decoration" href="https://storage.googleapis.com/video-localized-narratives/recordings/recordings_oops_train.zip">
+              <mwc-button raised="" class="download-button" icon="get_app">
+                Train (15.5GB)*
+              </mwc-button>
+            </a>
+            <a class="no-decoration" href="https://storage.googleapis.com/video-localized-narratives/recordings/recordings_oops_val.zip">
+              <mwc-button raised="" class="download-button" icon="get_app">
+                Validation (3.4GB)*
+              </mwc-button>
+            </a>
+          </div>
+
+          <div style="margin-bottom: 10px; margin-top: 45px">
+            <b>Video Narrative Grounding</b>
+          </div>
+          Here you can download the full set of Video Narrative Grounding Annotations
+          (<a id="open-vng-formats-link" style="text-decoration: underline; cursor: pointer" href="javascript:document.getElementById('vng-formats').open = true;">format description</a>).
+          <br>
+          <mwc-dialog id="vng-formats">
+            <mwc-button slot="primaryAction" onclick="document.getElementById('vng-formats').open = false;">
+            Close
+          </mwc-button>
+<div style="max-width: 750px; text-align: left;">
+<h2>File formats</h2>
+<p> The annotations consist of two JSON files per (sub-)dataset:
+  </p><ul>
+    <li><tt class="field">meta_expressions.json</tt></li>
+    <ul>
+      <li><tt class="field">videos</tt> A dictionary mapping mapping from the name of a video to the annotations for that video, which is again a dictionary with the following fields:</li>
+      <ul>
+        <li><tt class="field">frames</tt> A list of all frames of the video, e.g. <tt>['img_0000001', 'img_0000002', 'img_0000003']</tt>.</li>
+        <li><tt class="field">actor_narratives</tt> A list of dictionaries, each representing the narrative of one actor, with the following fields:</li>
+        <ul>
+          <li><tt class="field">actor_idx</tt> An integer id representing the actor, e.g. <tt>0</tt>.</li>
+          <li><tt class="field">actor_name</tt> The name of the actor (string): e.g. <tt>"Big cat"</tt>.</li>
+          <li><tt class="field">description</tt> The description of the actor (string, same as 'caption' for the raw VideoLN data), e.g. <tt>"A big gray colored cat is playing with the little kitten in the cage."</tt></li>
+        </ul>
+        <li><tt class="field">expressions</tt> A dictionary mapping from expression_ids (integer, e.g. '0' or '1') to the data of the expression, again given by a dictionary, with the following fields:</li>
+        <ul>
+          <li><tt class="field">narrative_actor_idx</tt> The index of the actor this expression belongs to (integer), e.g. <tt>0</tt>.</li>
+          <li><tt class="field">noun_phrase_start_idx</tt> and <tt class="field">noun_phrase_end_idx</tt> Integer indices (e.g. 0 and 18) into the description of the actor such that description[noun_phrase_start_idx:noun_phrase_end_idx] is the noun phrase that needs to be localized for the VNG task.</li>
+          <li><tt class="field">obj_id</tt> An integer identifier for the object which is used to look up the mask in either the original json file with annotations of the corresponding dataset, or in the provided extra_masks.json file, e.g. <tt>285</tt>.</li>          
+        </ul>
+      </ul>      
+    </ul>
+    <li><tt class="field">extra_masks.json</tt></li>
+    <ul>
+      <li><tt class="field">info</tt> A dictionary mapping from the key 'description' to a very short description (string, e.g. “OVIS-VNG test set extra mask annotations”).</li>
+      <li><tt class="field">videos</tt> A list of dictionaries, each providing meta-information about one video, with the following fields:</li>
+      <ul>
+        <li><tt class="field">width</tt> The width of the frames of the video (integer), e.g. <tt>1920</tt>.</li>
+        <li><tt class="field">height</tt> The height of the frames of the video (integer), e.g. <tt>1080</tt>.</li>
+        <li><tt class="field">length</tt> The number of frames of the video (integer), e.g. <tt>25</tt>.</li>
+        <li><tt class="field">file_names</tt> a list of names of the frames of the video, e.g. <tt>['25153e58/img_0000001.jpg', '25153e58/img_0000002.jpg', '25153e58/img_0000003.jpg', '25153e58/img_0000004.jpg']</tt>.</li>
+        <li><tt class="field">id</tt> An integer identifier of the video, e.g. <tt>548</tt>.</li>
+      </ul>
+      <li><tt class="field">annotations</tt> A dictionary providing segmentation masks, with the following items:</li>
+      <ul>
+        <li><tt class="field">id</tt> An integer identifier of the object, e.g. <tt>4850600790259722026</tt>. Note that the meta_expressions.json data refers to these ids with 'expressions' -&gt; 'obj_id'.</li>
+        <li><tt class="field">video_id</tt> An integer identifier of the video, e.g. <tt>548</tt>.</li>
+        <li><tt class="field">height</tt> The height of the frames of the video (integer), e.g. <tt>994</tt>.</li>
+        <li><tt class="field">width</tt> The width of the frames of the video (integer), e.g. <tt>1920</tt>.</li>
+        <li><tt class="field">video_name</tt> The name of the video this annotation belongs to (string), e.g. <tt>"3a6e6ace"</tt>.</li>
+        <li><tt class="field">segmentations</tt> A list of dictionaries (or null values) that provide a segmentation mask for each frame with the following items:</li>
+        <ul>
+          <li><tt class="field">size</tt> A list of two integers, e.g. <tt>[994, 1920]</tt>, specifying the height (994) and width (1920) of the mask annotation.</li>
+          <li><tt class="field">counts</tt> A run-length encoded representation of the segmentation mask (string), that can be decoded to a mask using pycocotools.</li>
+        </ul>
+      </ul>
+    </ul>
+    Additionally, we have a train.txt and test.txt file for OVIS which defines our split of the OVIS dataset into training and test subset by listing the names of video in the sets.
+  </ul>
+</div>
+</mwc-dialog>
+
+          <div class="col-download-text">All datasets</div>
+          <a class="no-decoration" href="https://storage.googleapis.com/video-localized-narratives/vng.zip">
+            <mwc-button raised="" class="download-button-single" icon="get_app">
+              OVIS VNG + UVO VNG (14.9MB)*
+            </mwc-button>
+          </a>
+
+          <div style="margin-bottom: 10px; margin-top: 45px">
+            <b>Video Question-Answering</b>
+          </div>
+          Here you can download the Oops-QA benchmark annotations including text-output and location-output questions and answers for the Oops dataset
+          (<a id="open-vqa-formats-link" style="text-decoration: underline; cursor: pointer" href="javascript:document.getElementById('vqa-formats').open = true;">format description</a>).
+          <br>          
+          <mwc-dialog id="vqa-formats">
+            <mwc-button slot="primaryAction" onclick="document.getElementById('vqa-formats').open = false;">
+            Close
+          </mwc-button>
+<div style="max-width: 750px; text-align: left;">
+<h2>File formats</h2>
+<p> The annotations consist of two JSON files per (sub-)dataset:
+  </p><ul>
+    <li><tt class="field">qa_text_output.json</tt> Provides a dictionary for text-output questions with the following fields:</li>
+    <ul>
+      <li><tt class="field">dataset</tt> The name of the dataset (string), e.g. <tt>"Oops"</tt>.</li>
+      <li><tt class="field">split</tt> The split of the dataset (string), e.g. <tt>"train"</tt> or <tt>"val"</tt>.</li>
+      <li><tt class="field">annotations</tt> Provides VideoQA text-output annotations as a list of dictionaries with the following fields:</li>
+      <ul>
+        <li><tt class="field">video_name</tt> The name of the video this annotation belongs to (string), e.g. <tt>"train/False Start! - Best Fails of the Week! (May 2018) _ FailArmy31"</tt></li>
+        <li><tt class="field">qa_pairs</tt> A list of dictionaries of questions and answers for this video, with the following fields:</li>
+        <ul>
+          <li><tt class="field">question_id</tt> ID for this question (string), e.g. <tt>"train/False Start! - Best Fails of the Week! (May 2018) _ FailArmy31_question_train_0"</tt>.</li>          
+          <li><tt class="field">question</tt> Processed question used in our experiments  (string), e.g. <tt>"who throws the egg at the man"</tt>.</li>          
+          <li><tt class="field">answer</tt> Processed answer used in our experiments (string), e.g. <tt>"baby girl"</tt>.</li>
+          <li><tt class="field">raw_question</tt> Raw question (string), e.g. <tt>"Who throws the egg at the man?"</tt>. In almost all cases you should use the <tt>"question"</tt> field instead.</li>
+          <li><tt class="field">raw_answer</tt> Raw answer (string), e.g. <tt>"Baby girl"</tt>.  In almost all cases you should use the <tt>"answer"</tt> field instead.</li>
+        </ul>
+      </ul>
+    </ul>
+
+    <li><tt class="field">qa_location_output.json</tt> Provides a dictionary for location-output questions that maps from video names (string) to a list of VideoQA location-output question annotations for the video, where each question is an dictionary with the following fields:</li>
+    <ul>
+      <li><tt class="field">vidln_id</tt> An integer identifier referring to the localized narrative on which this question is based.</li>
+      <li><tt class="field">actor_idx</tt> An integer id representing the actor from which the question was generated, e.g. <tt>0</tt>.</li>
+      <li><tt class="field">question_hash</tt> A unique string identifier of the question, e.g. <tt>"69e69b3a8b29d92dd94be66c79f82d69"</tt></li>
+      <li><tt class="field">question</tt> The location-output question as a string, e.g. <tt>"Where is the man that is wearing gray pants?"</tt></li>
+      <li><tt class="field">video_name</tt> The name of the video this annotation belongs to (string), e.g. <tt>"Best Fails of the Week 3 May 2016 _ FailArmy29"<tt>.</tt></tt></li><tt><tt>
+      <li><tt class="field">trace_frame</tt> The name of the frame for which the trace is annotated (string), e.g. <tt>"000009.png"</tt></li>
+      <li><tt class="field">txt_slice_indices</tt> A list of two integers (e.g. [2, 5]), that define the start and end index with which the description of the actor can be sliced to obtain the object of interest.</li>
+      <li><tt class="field">txt_slice</tt> The name of the object of interest as string (e.g. <tt>"man"</tt>). The same as taking the caption of the actor and slicing it: caption[txt_slice_indices[0]:txt_slice_indices[1]].</li>
+      <li><tt class="field">trace</tt> A dictionary encoding the mouse trace as a segmentation mask with the following items:</li>
+      <ul>
+        <li><tt class="field">size</tt> A list of two integers (e.g. <tt>[720, 538]</tt>) specifying the height (720) and width (538) of the mask annotation.</li>
+        <li><tt class="field">counts</tt> A run-length encoded representation of the segmentation mask (string), that can be decoded to a mask using pycocotools.</li>
+      </ul>
+    </tt></tt></ul><tt><tt>    
+  </tt></tt></ul><tt><tt>
+</tt></tt></div><tt><tt>
+</tt></tt></mwc-dialog><tt><tt>
+
+          <div class="col-download-text">Oops</div>
+          <a class="no-decoration" href="https://storage.googleapis.com/video-localized-narratives/videoqa.zip">
+            <mwc-button raised="" class="download-button-single" icon="get_app">
+              Location-output and text-output (3.8MB)*
+            </mwc-button>
+          </a>
+
+          <p class="license">
+            <i>* The annotations are licensed by Google LLC under
+              <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>
+              license.</i>
+          </p>
+        </tt></tt></div><tt><tt>
+
+        <div class="visualizer-container mask" id="visualizer">
+          <div class="visualizer-header">
+            <mwc-icon-button class="float-left tooltip" icon="close" onclick="closeVisualizer();">
+              <span class="tooltiptext leftmost-tooltip">Close visualizer</span>
+            </mwc-icon-button>
+          </div>
+
+          <video-localized-narratives-visualizer id="visualizer-inner" class="visualizer">
+            <loco-annotated-image id="display-annotated-image" canvas-width="100vw" border-width="0">
+            </loco-annotated-image>
+          </video-localized-narratives-visualizer>
+        </div>
+      </tt></tt></div><tt><tt>
+    </tt></tt></div><tt><tt>
+  
+
+</tt></tt>
+<script src="web.js"></script></body></html>
