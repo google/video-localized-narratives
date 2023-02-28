@@ -1,5 +1,6 @@
 # Video Localized Narratives
 Visit the [project page](https://google.github.io/video-localized-narratives) for all the information about Video Localized Narratives, data downloads, data formats, visualizations, and more.
+The arXiv version of our CVPR paper can be found [here](https://arxiv.org/abs/2302.11217).
 
 Here we provide the official code for the publication "Connecting Vision and Language with Video Localized Narratives".
 The code can be used to load and visualize the Video Localized Narrative (VidLN) annotations.
@@ -197,10 +198,10 @@ Your result for the Oops-QA validation set should look like this
 
 If you use this code for a publication, please cite
 ```
-@article{VoigtlaenderVidLN2023,
+@inproceedings{Voigtlaender23CVPR,
   author        = {Paul Voigtlaender and Soravit Changpinyo and Jordi Pont-Tuset and Radu Soricut and Vittorio Ferrari},
   title         = {{Connecting Vision and Language with Video Localized Narratives}},
-  booktitle     = {arXiv preprint arXiv:2302.11217},
+  booktitle     = {IEEE/CVF Conference on Computer Vision and Pattern Recognition},
   year          = {2023}
 }
 ```
