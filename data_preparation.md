@@ -6,6 +6,7 @@ them according to the instructions of the original datasets:
 * [OVIS](https://songbai.site/ovis/)
 * [UVO (v1.0)](https://sites.google.com/corp/view/unidentified-video-object/dataset)
 * [Oops](https://oops.cs.columbia.edu/data/)
+* [Kinetics](https://www.deepmind.com/open-source/kinetics)
 
 You can use this [script](https://drive.google.com/file/d/1C0TKKVIOfaQ_qiVxGuQbMAlXUcTd3B4h/view?usp=sharing)
 provided with the UVO dataset, to extract frames from the video files.
