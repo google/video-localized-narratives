@@ -888,6 +888,34 @@ input:focus {
         </div>
 
         <hr class="separator">
+        <h2>Description</h2>
+        <div id="abstract-div" class="center block">
+          Video Localized Narratives are a new form of multimodal video annotations connecting vision and language. In the original Localized Narratives, annotators speak and move their mouse simultaneously on an image, thus grounding each word with a mouse trace segment. However, this is challenging on a video. Our new protocol empowers annotators to tell the story of a video with Localized Narratives, capturing even complex events involving multiple actors interacting with each other and with several passive objects. We annotated 50k videos of the OVIS, UVO, Oops, and Kinetics datasets, totalling 3.5M words. Based on this data, we also construct new benchmarks for video narrative grounding and video question-answering tasks, and provide reference results from strong baseline models.
+        </div>
+
+        <hr class="separator">
+        <h2>Explore</h2>
+        <img src="data/vidln-ostrich.png" alt="A video localized narrative annotation example" class="example-img">
+        <div id="visualizer-open-div" class="center block">
+          <mwc-button raised="" class="page-button" icon="open_in_browser" onclick="openVisualizer();">
+            Open Annotation Visualizer
+          </mwc-button>
+        </div>
+
+        <hr class="separator">
+        <h2>Code</h2>
+        <div id="code-div" class="center block">
+          Visit the
+          <a href="https://github.com/google/video-localized-narratives" target="_blank">GitHub repository</a>
+          to view the code work with Video Localized Narratives.
+          <br>
+          Here is the
+          <a id="open-vln-formats-link-1" style="text-decoration: underline; cursor: pointer" href="javascript:document.getElementById('vln-formats').open = true;">documentation</a>
+          about the file format used used for the Video Localized Narratives.
+        </div>
+
+
+        <hr class="separator">
         <h2>Publication</h2>
         <div id="publication-div" class="center block">
           <b>Connecting Vision and Language with Video Localized Narratives</b>
@@ -898,6 +926,8 @@ input:focus {
           IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2023
           <br>
           [<a href="https://arxiv.org/abs/2302.11217" target="_blank">arXiv</a>] [<a href="javascript:document.getElementById('bibtex').open = true;">BibTeX</a>]
+          <br>
+          Note: We added the annotations for Kinetics recently, hence the paper only mentions the annotations on OVIS, UVO, and Oops.
           <a href="https://arxiv.org/abs/2302.11217" target="_blank">
             <div class="row paper-row">
               <div class="paper-col">
@@ -942,33 +972,6 @@ input:focus {
             Close
           </mwc-button>
         </mwc-dialog>
-
-        <hr class="separator">
-        <h2>Abstract</h2>
-        <div id="abstract-div" class="center block">
-          We propose Video Localized Narratives, a new form of multimodal video annotations connecting vision and language. In the original Localized Narratives, annotators speak and move their mouse simultaneously on an image, thus grounding each word with a mouse trace segment. However, this is challenging on a video. Our new protocol empowers annotators to tell the story of a video with Localized Narratives, capturing even complex events involving multiple actors interacting with each other and with several passive objects. We annotated 50k videos of the OVIS, UVO, Oops, and Kinetics datasets, totalling 3.5M words. Based on this data, we also construct new benchmarks for video narrative grounding and video question-answering tasks, and provide reference results from strong baseline models. Our annotations are available at <a href="https://google.github.io/video-localized-narratives/">https://google.github.io/video-localized-narratives/</a>.
-        </div>
-
-        <hr class="separator">
-        <h2>Explore</h2>
-        <img src="data/vidln-ostrich.png" alt="A video localized narrative annotation example" class="example-img">
-        <div id="visualizer-open-div" class="center block">
-          <mwc-button raised="" class="page-button" icon="open_in_browser" onclick="openVisualizer();">
-            Open Annotation Visualizer
-          </mwc-button>
-        </div>
-
-        <hr class="separator">
-        <h2>Code</h2>
-        <div id="code-div" class="center block">
-          Visit the
-          <a href="https://github.com/google/video-localized-narratives" target="_blank">GitHub repository</a>
-          to view the code work with Video Localized Narratives.
-          <br>
-          Here is the
-          <a id="open-vln-formats-link-1" style="text-decoration: underline; cursor: pointer" href="javascript:document.getElementById('vln-formats').open = true;">documentation</a>
-          about the file format used used for the Video Localized Narratives.
-        </div>
 
         <hr class="separator">
         <h2>Downloads</h2>
